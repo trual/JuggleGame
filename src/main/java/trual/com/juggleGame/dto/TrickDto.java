@@ -1,4 +1,4 @@
-package trual.com.juggleGame.dto.model;
+package trual.com.juggleGame.dto;
 
 import lombok.Data;
 

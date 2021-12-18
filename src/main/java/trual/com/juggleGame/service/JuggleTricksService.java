@@ -3,7 +3,7 @@ package trual.com.juggleGame.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
-import trual.com.juggleGame.dto.model.TrickDto;
+import trual.com.juggleGame.dto.TrickDto;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
