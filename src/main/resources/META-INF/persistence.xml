@@ -16,16 +16,16 @@ mapped to database tables. Database driver, location, userid and pw
         <!-- Define the class for Hibernate which implements JPA -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- Define the object that should be persisted in the database -->
-        <class>trual.com.juggleGame.model.Customer</class>
+        <class>trual.com.juggleGame.model.User</class>
         <properties>
             <!-- Driver for DB database -->
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <!-- URL for DB -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/test4" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/juggledb" />
             <!-- Username -->
             <property name="javax.persistence.jdbc.user" value="juggle" />
             <!-- Password -->
-            <property name="javax.persistence.jdbc.password" value="juggle" />
+            <property name="javax.persistence.jdbc.password" value="*******" />
 
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/> <!-- DB Dialect -->

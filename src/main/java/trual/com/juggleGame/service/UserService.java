@@ -3,7 +3,7 @@ package trual.com.juggleGame.service;
 import org.springframework.stereotype.Component;
 import trual.com.juggleGame.db.EmProvider;
 import trual.com.juggleGame.dto.UserDto;
-import trual.com.juggleGame.model.Customer;
+import trual.com.juggleGame.model.User;
 
 import java.util.List;
 
@@ -14,11 +14,17 @@ public class UserService {
         return List.of(new UserDto());
     }
 
+    public void addUser(int id, String firstName, String lastName, String email, String phone){
+        EmProvider emf = EmProvider.getInstance();
+        User.addUser(emf, id, firstName, lastName, email, phone);
+    }
+
+
     public void getUser(int id){
         EmProvider emf = EmProvider.getInstance();
-        Customer customer = Customer.getCustomer(id, emf);
-        if (customer != null){
-            System.out.println(customer);
+        User user = User.getUser(emf, id);
+        if (user != null){
+            System.out.println(user);
         }
     }
 }

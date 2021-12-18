@@ -2,7 +2,6 @@ package trual.com.juggleGame.model;
 
 import lombok.Data;
 import trual.com.juggleGame.db.EmProvider;
-import trual.com.juggleGame.dto.UserDto;
 
 import java.io.Serializable;
 import java.util.List;
