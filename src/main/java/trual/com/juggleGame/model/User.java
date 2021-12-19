@@ -78,4 +78,27 @@ public class User implements Serializable {
         }
     }
 
+    public static void changeFirstname(EmProvider emf, int id, String firstName) {
+        EntityManager em = emf.createEntityManger();
+        EntityTransaction et = null;
+        User user = null;
+        try {
+            et = em.getTransaction();
+            et.begin();
+            user = em.find(User.class, id);
+            user.setFirstName(firstName);
+            em.persist(user);
+            et.commit();
+        }
+        catch (Exception ex) {
+            if (et != null) {
+                et.rollback();
+            }
+            ex.printStackTrace();
+        }
+        finally {
+            em.close();
+        }
+    }
+
 }

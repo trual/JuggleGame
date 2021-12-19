@@ -4,6 +4,8 @@ package trual.com.juggleGame.db;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
+
 
 public class EmProvider {
     private static EmProvider instance = null;
@@ -11,6 +13,8 @@ public class EmProvider {
     private EmProvider(){
         emf = Persistence.createEntityManagerFactory("juggleGame");
     }
+
+    @PersistenceUnit
     public static EmProvider getInstance()
     {
         if(instance == null)

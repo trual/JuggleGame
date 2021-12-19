@@ -1,7 +1,6 @@
 package trual.com.juggleGame.config.v1.api;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,7 +11,6 @@ import trual.com.juggleGame.service.JuggleTricksService;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/tricks", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -30,6 +28,6 @@ public class JuggleTrickController {
     @GetMapping("/getAll")
     public ResponseEntity<Collection> getThreeBallTricks() throws IOException, URISyntaxException {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(juggleTricksService.getThreeBallTricks());
+                .body(juggleTricksService.getAllTricks());
     }
 }
