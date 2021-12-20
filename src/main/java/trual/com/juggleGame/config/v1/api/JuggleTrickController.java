@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import trual.com.juggleGame.dto.TrickDto;
 import trual.com.juggleGame.service.JuggleTricksService;
 
 import java.io.IOException;
@@ -19,15 +20,25 @@ public class JuggleTrickController {
     @Autowired
     JuggleTricksService juggleTricksService;
 
-    @GetMapping("/hello")
-    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return String.format("Hello %s!", name);
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getAll")
+    public ResponseEntity<Collection> getAllTricks() throws IOException, URISyntaxException {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(juggleTricksService.getAllTricks());
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/getAll")
-    public ResponseEntity<Collection> getThreeBallTricks() throws IOException, URISyntaxException {
+    @PostMapping("/addTrick")
+    public ResponseEntity<TrickDto> addTrick(@RequestBody TrickDto t){
+        juggleTricksService.addTrick(t);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(juggleTricksService.getAllTricks());
+                .body(t);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @DeleteMapping("/removeTrick")
+    public ResponseEntity<Boolean> removeTrick(Integer id){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(juggleTricksService.removeTrick(id));
     }
 }

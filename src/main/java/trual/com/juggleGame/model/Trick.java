@@ -108,7 +108,7 @@ public class Trick implements Serializable {
         }
     }
 
-    public static void deleteTrick(EmProvider emf, int id) {
+    public static boolean deleteTrick(EmProvider emf, int id) {
         EntityManager em = emf.createEntityManger();
         EntityTransaction et = null;
         Trick trick = null;
@@ -117,7 +117,6 @@ public class Trick implements Serializable {
             et.begin();
             trick = em.find(Trick.class, id);
             em.remove(trick);
-            em.persist(trick);
             et.commit();
         }
         catch (Exception ex) {
@@ -125,9 +124,11 @@ public class Trick implements Serializable {
                 et.rollback();
             }
             ex.printStackTrace();
+            return false;
         }
         finally {
             em.close();
         }
+        return true;
     }
 }
