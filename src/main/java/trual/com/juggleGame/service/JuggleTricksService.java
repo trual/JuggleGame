@@ -32,6 +32,11 @@ public class JuggleTricksService {
         Trick.addTrick(emf, id, balls, name, animation, prereq);
     }
 
+    public void addTrick(TrickDto t) {
+        EmProvider emf = EmProvider.getInstance();
+        Trick.addTrick(emf, t.getId(), t.getBalls(), t.getName(), t.getAnimation(), t.getPrereq());
+    }
+
     public void getTrick(int id) {
     EmProvider emf = EmProvider.getInstance();
     Trick trick = Trick.getTrick(emf, id);
@@ -54,6 +59,10 @@ public class JuggleTricksService {
             trickDtoList = getTricksFromJson(); //this is here for if no database is running
         }
         return trickDtoList;
+    }
 
+    public boolean removeTrick(int id) {
+        EmProvider emf = EmProvider.getInstance();
+        return Trick.deleteTrick(emf, id);
     }
 }
