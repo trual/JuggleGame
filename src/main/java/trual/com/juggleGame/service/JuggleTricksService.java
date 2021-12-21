@@ -65,4 +65,10 @@ public class JuggleTricksService {
         EmProvider emf = EmProvider.getInstance();
         return Trick.deleteTrick(emf, id);
     }
+
+    public TrickDto updateTrick(TrickDto trickDto) {
+        EmProvider emf = EmProvider.getInstance();
+        return Trick.updatePrereq(emf, trickDto);
+
+    }
 }

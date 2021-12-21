@@ -31,7 +31,7 @@ public class JuggleTrickController {
     @PostMapping("/addTrick")
     public ResponseEntity<TrickDto> addTrick(@RequestBody TrickDto t){
         juggleTricksService.addTrick(t);
-        return ResponseEntity.status(HttpStatus.OK)
+        return ResponseEntity.status(HttpStatus.CREATED)
                 .body(t);
     }
 
@@ -41,4 +41,13 @@ public class JuggleTrickController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(juggleTricksService.removeTrick(id));
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PutMapping("/updateTrick")
+    public ResponseEntity<TrickDto> updatePrereq(@RequestBody TrickDto t){
+        juggleTricksService.updateTrick(t);
+        return ResponseEntity.status(HttpStatus.ACCEPTED)
+                .body(t);
+    }
+
 }
