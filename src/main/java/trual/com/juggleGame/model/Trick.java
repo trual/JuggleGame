@@ -131,4 +131,32 @@ public class Trick implements Serializable {
         }
         return true;
     }
+
+    public static TrickDto updatePrereq(EmProvider emf, TrickDto trickDto) {
+        EntityManager em = emf.createEntityManger();
+        EntityTransaction et = null;
+        Trick trick = null;
+        try {
+            et = em.getTransaction();
+            et.begin();
+            trick = em.find(Trick.class, trickDto.getId());
+            trick.setBalls(trick.getBalls());
+            trick.setName(trickDto.getName());
+            trick.setAnimation(trickDto.getAnimation());
+            trick.setPrereq(trickDto.getPrereq());
+            em.persist(trick);
+            et.commit();
+            return new TrickDto(trick);
+        }
+        catch (Exception ex) {
+            if (et != null) {
+                et.rollback();
+            }
+            ex.printStackTrace();
+            return null;
+        }
+        finally {
+            em.close();
+        }
+    }
 }
