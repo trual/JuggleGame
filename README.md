@@ -20,3 +20,8 @@ port: 8080
 ENDPOINTS
 
 ```/api/v1/tricks/getAll```
+
+
+
+Database: postgres commands, create a juggler user
+src/main/java/trual/com/juggleGame/Scripts.sql
